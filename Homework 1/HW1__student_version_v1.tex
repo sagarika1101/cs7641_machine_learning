@@ -1,0 +1,254 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\title{Fall 2020 CS4641/CS7641 A Homework 1}
+\author{Dr. Mahdi Roozbahani}
+\date{Deadline: Sep 10, Thursday, 11:59 pm AOE}
+
+\usepackage{natbib}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{hyperref}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+    pdftitle={Sharelatex Example},
+    bookmarks=true,
+    pdfpagemode=FullScreen,
+}
+
+\begin{document}
+\maketitle
+\begin{itemize}
+    \item No extension of the deadline is allowed. \textbf{Late submission will lead to 0 credit}.
+    \item Discussion is encouraged on Piazza as part of the Q/A. However, all assignments \textbf{should be done individually}.
+\end{itemize}
+
+\section*{Instructions}
+\begin{itemize}
+    \item This assignment has no programming, only written questions.
+    \item We will be using Gradescope this semester for submission and grading of assignments. 
+    \item Your write up must be submitted in PDF form, you may use either Latex or markdown, whichever you prefer. We will not accept handwritten work.
+    \item Please make sure to \textbf{start answering each question on a new page}. It makes it more organized to map your answers on GradeScope. When submitting your assignment, you must \textbf{correctly map pages of your PDF to each question/subquestion} to reflect where they appear. Improperly mapped questions may not be graded correctly.
+    \item Please \textbf{show the calculation process} used to arrive at the answer. Submissions with only the final answer and no derivation/calculation process will receive \textbf{0 credit}
+
+\end{itemize}
+\section{Linear Algebra [30pts]}
+\subsection{Determinant and Inverse of Matrix [15pts]}
+Given a matrix $M$:
+
+$$M = \begin{bmatrix} 
+  r & 6 & 0 \\ 
+  2 & 3 & r \\
+  4 & 7 & 3
+  \end{bmatrix}
+$$
+\begin{enumerate}[label=(\alph*)]
+    \item Calculate the determinant of $M$ in terms of $r$.  [4pts] 
+    \item For what value(s) of $r$ does $M^{-1}$ not exist? Why? What does it mean in terms of rank and singularity of $M$ for these values of $r$? [3pts]
+    \item Calculate $M^{-1}$ by hand for $r = 4$.  [5pts]
+    (\textbf{Hint 1:} Please double check your answer and make sure $M M^{-1} = I$) 
+    \item Find the determinant of $M^{-1}$ for $r = 4$. [3pts]
+\end{enumerate}
+
+\subsection{Characteristic Equation [5pts]}
+Consider the eigenvalue problem: 
+$$Ax =\lambda x, x \neq 0$$
+where $x$ is a non-zero eigenvector and $\lambda$ is eigenvalue of $A$. Prove that the determinant $|A-\lambda I|= 0$. \\
+
+
+\subsection{Eigenvalues and Eigenvectors [10pts]}
+Given a matrix A:
+
+$$A = \begin{bmatrix} 
+  x & 3  \\ 
+  1 & x \\
+  \end{bmatrix}
+$$
+
+\begin{enumerate}[label=(\alph*)]
+\item Calculate the eigenvalues of $A$ as a function of $x$  [5 pts]
+\item Find the normalized eigenvectors of matrix $A$  [5 pts]
+
+\end{enumerate}
+
+\section{Expectation, Co-variance and Independence [18pts]}
+Suppose $X, Y$ and $Z$ are three different random variables.
+Let $X$ obey a Bernouli Distribution. The probability disbribution function is
+    $$p(x)=\left\{
+    \begin{array}{c l}	
+         0.5 & x = c\\
+         0.5 & x = -c.
+    \end{array}\right.$$
+    $c$ is a constant here.
+Let $Y$ obey a standard Normal (Gaussian) distribution, which can be written as $Y \sim N(0,1)$. $X$ and $Y$ are independent. Meanwhile, let $Z = XY$.
+
+\begin{enumerate}[label=(\alph*)]
+    
+\item Show that $Z$ also follows a Normal (Gaussian) distribution. Calculate the Expectation and Variance of $Z$. [9pts]
+(\textbf{Hint:} Sum rule and conditional probability formula)
+
+        
+\item How should we choose $c$ such that $Y$ and $Z$ are uncorrelated(which means $Cov(Y,Z) = 0)$? [5pts]
+    
+
+\item Are $Y$ and $Z$ independent? Make use of probabilities to show your conclusion. Example: $P(Y\in(-1,0))$ and $P(Z\in(2c,3c))$ [4pts]
+
+
+
+\end{enumerate} 
+
+
+\section{Optimization [15 pts]}
+Optimization problems are related to minimizing a function (usually termed loss, cost or error function) or maximizing a function (such as the likelihood) with respect to some variable x. The Kuhn-Tucker conditions are first-order conditions that provide a unified treatment of constraint optimization. In this question, you will be solving the following optimization problem:\\
+
+\begin{align*}
+    \max_{x,y} \;\;& f(x,y) = 2x^{2}+3xy \\
+    \text{s.t.} \;\;& g_{1}(x,y) = \frac{1}{2}x^{2}+y \leq 4 \\
+    & g_{2}(x,y) =-y \leq -2
+\end{align*}
+
+
+
+\begin{enumerate}[label=(\alph*)]
+\item Specify the Legrange function [2 pts]
+\item List the KKT conditions  [2 pts]
+\item Solve for 4 possibilities formed by each  constraint being active or inactive  [5 pts]
+\item List all candidate points  [4 pts]
+\item Check for maximality and sufficiency  [2 pts]
+\end{enumerate}
+
+\section{Maximum Likelihood [10 + 25 pts]}
+\subsection{Discrete Example [10 pts]}
+Suppose we have two types of coins, A and B. The probability of a Type A coin showing heads is $\theta$.  The probability of a Type B coin showing heads is $2\theta$. Here, we have a bunch of coins of either type A or B. Each time we choose one coin and flip it. We do this experiment 10 times and the results are shown in the chart below. (\textbf{Hint:} The probabilities aforementioned are for the particular sequence below.)
+\\
+
+
+\begin{center}
+\begin{tabular}{ccc}
+\hline
+Coin Type & Result\\
+\hline
+A& Tail\\
+A& Tail\\
+A& Tail\\
+A& Tail\\
+A& Tail\\
+A& Head\\
+A& Head\\
+B& Head\\
+B& Head\\
+B& Head\\
+\hline
+\end{tabular}
+\end{center}
+
+\begin{enumerate}[label=(\alph*)]
+\item What is the likelihood of the result given $\theta$? [4pts]
+
+
+\item What is the maximum likelihood estimation for $\theta$? [6pts]\\\\
+
+\end{enumerate}
+
+\subsection{Normal distribution [15 pts](Bonus for Undergrads)}
+Suppose that we observe samples of a known function $g(t)=t^{3}$ with unknown amplitude $\theta$ at (known) arbitrary locations $t_{1}, \ldots, t_{N},$ and these samples are corrupted by Gaussian noise. That is, we observe the sequence of random variables
+$$
+X_{n}=\theta t_{n}^{3}+Z_{n}, \quad n=1, \ldots, N
+$$
+where the $Z_{n}$ are independent and $Z_{n} \sim$ Normal $\left(0, \sigma^{2}\right)$\\\\
+(a) Given $X_{1}=x_{1}, \ldots, X_{N}=x_{N},$ compute the log likelihood function
+$$
+\ell\left(\theta ; x_{1}, \ldots, x_{N}\right)=\log f_{X_{1}, \ldots, X_{N}}\left(x_{1}, \ldots, x_{N} ; \theta\right)=\log \left(f_{X_{1}}\left(x_{1} ; \theta\right) f_{X_{2}}\left(x_{2} ; \theta\right) \cdots f_{X_{N}}\left(x_{N} ; \theta\right)\right)
+$$
+Note that the $X_{n}$ are independent (as the last equality is suggesting) but not identically distributed (they have different means). [9pts]\\\\
+(b) Compute the MLE for $\theta$. [6pts]\\\\
+
+\subsection{Bonus for undergrads [10 pts]}
+The C.D.F of independent random variables $X_{1}, X_{2},..., X_{n}$ is 
+$$P(X_{i}\leq x| \alpha, \beta)=\left\{
+\begin{aligned}
+&0, & x < 0 \\
+&(\frac{x}{\beta})^{\alpha}, & 0\leq x \leq \beta \\
+&1, &x> \beta
+\end{aligned}
+\right.$$
+where $\alpha \geq 0$, $\beta \geq 0$. \\\\
+(a) Write down the P.D.F of above independent random variables. [4pts]\\\\
+(b) Find the MLEs of $\alpha$ and $\beta$. [6pts]\\
+
+\section{Information Theory [32pts]}
+\subsection{Marginal Distribution [6pts]}
+
+Suppose the joint probability distribution of two binary random variables $X$ and $Y$ are given as follows.
+$$
+\renewcommand*{\arraystretch}{1.3}
+\begin{array}{|c|c|c|}\hline X | Y & {1} & {2} \\ \hline 0 & {\frac{1}{3}} & {\frac{1}{3}} \\ \hline 1 & {0} & {\frac{1}{3}} \\ \hline\end{array}
+$$
+
+\begin{enumerate}[label=(\alph*)]
+
+\item Show the marginal distribution of $X$ and $Y$, respectively. [3pts]
+
+
+\item Find mutual information for the joint probability distribution in the previous question [3pts]
+
+     
+\end{enumerate}
+\subsection{Mutual Information and Entropy [19pts]}
+
+Given a dataset as below.
+$$
+\begin{array}{|c|c|c|c|c|c|}\hline Sr.No. & Age & Immunity & Travelled? & Underlying Conditions & Self-quarantine? \\ \hline 1 & young & high & no & yes & no \\ \hline 2 & young & high & no & no & no \\ \hline 3 & middle aged & high & no & yes & yes \\ \hline 4 & senior & medium & no & yes & yes \\ \hline 5 & senior & low & yes & yes & yes \\ \hline 6 & senior & low & yes & no & no \\ \hline 7 & middle aged & low & yes & no & yes\\ \hline 8 & young & medium & no & yes & no\\ \hline 9 & young & low & yes & yes & no\\ \hline 10 & senior & medium & yes & yes & yes\\ \hline 11 & young & medium & yes & no & yes \\ \hline 12 & middle aged & medium & no & no & yes \\ \hline 13 & middle aged & high & yes & yes & yes \\ \hline 14 & senior & medium & no & no & no \\\hline\end{array}
+$$
+
+We want to decide whether an individual working in an essential services industry should be allowed to work or self-quarantine. Each input has four features ($x_1$, $x_2$, $x_3$, $x_4$): Age, Immunity, Travelled, Underlying Conditions. The decision (quarantine vs not) is represented as $Y$.
+\begin{enumerate}[label=(\alph*)]
+\item Find entropy $H(Y)$. [3pts]
+
+\item Find conditional entropy $H(Y|x_1)$, $H(Y|x_4)$, respectively. [8pts]
+
+\item Find mutual information $I(x_1, Y)$ and $I(x_4, Y)$ and determine which one ($x_1$ or $x_4$) is more informative. [4pts]
+\item Find joint entropy $H(Y, x_3)$. [4pts] 
+\end{enumerate}
+
+\subsection{Entropy Proofs [7pts]}
+\begin{enumerate}[label=(\alph*)]
+\item Suppose $X$ and $Y$ are independent. Show that $H(X|Y) = H(X)$. [2pts]
+
+
+
+\item Suppose $X$ and $Y$ are independent. Show that $H(X,Y) = H(X) + H(Y)$. [2pts]
+
+  
+\item Prove that the mutual information is symmetric, i.e., $I(X, Y) = I(Y, X)$ and $x_i \in X, y_i \in Y$ [3pts]
+
+\end{enumerate}
+
+\section{Bonus for All [10 pts]}
+
+\begin{enumerate}[label=(\alph*)]
+\item If a random variable X has a Poisson distribution with mean 8, then calculate the expectation E[${(X+2)^{2}}$] [2 pts]
+
+\item A person decides to toss a fair coin repeatedly until he gets a head. He will make at most 3 tosses. Let the random variable Y denote the number of heads. Find the variance of Y. [4 pts]
+
+\item Two random variables X and Y are distributed according to 
+$$f_{x,y}(x,y)=\left\{
+\begin{aligned}
+&(x+y), & 0\leq x\leq1,0\leq y\leq1 \\
+&0, & otherwise\\
+\end{aligned}
+\right.$$
+What is the probability P(X+Y $\leq$ 1)? 
+ [4 pts]
+
+\end{enumerate}
+
+
+
+\end{document}
